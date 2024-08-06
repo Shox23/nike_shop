@@ -1,0 +1,234 @@
+<template>
+  <div class="header">
+    <div class="header__upper">
+      <div class="header__container container">
+        <div class="header__links">
+          <a href="https://www.nike.com/jordan"
+            ><img src="/icons/jordan.svg" alt="logo"
+          /></a>
+          <a href="https://www.nike.com/w/converse-akmjx"
+            ><img src="/icons/converse.svg" alt="logo"
+          /></a>
+        </div>
+        <ul class="header__list">
+          <li
+            class="header__list__item"
+            :class="idx < listOfLinks.length - 1 ? 'bordered' : ''"
+            v-for="(item, idx) in listOfLinks"
+            :key="item.text"
+          >
+            <a class="header__link" :href="item.link">{{ item.text }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <header class="header__header">
+      <div class="header__grid container">
+        <div class="header__logo">
+          <NuxtLink to="/">
+            <img src="/icons/nike.svg" alt="logo" />
+          </NuxtLink>
+        </div>
+
+        <nav>
+          <ul class="header__nav">
+            <li
+              class="header__nav__item"
+              v-for="item in navItems"
+              :key="item.text"
+            >
+              <NuxtLink class="header__nav__link" to="/">
+                {{ item.text }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header__controls">
+          <div>
+            <button class="header__controls__search">
+              <img src="/icons/search.svg" alt="search" />
+            </button>
+          </div>
+          <RouterLink class="header__controls__link" title="Favorites" to="/">
+            <img src="/icons/favorites.svg" alt="favorites" />
+          </RouterLink>
+          <RouterLink class="header__controls__link" title="Cart" to="/">
+            <img src="/icons/bag.svg" alt="bag" />
+          </RouterLink>
+        </div>
+      </div>
+    </header>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import type { NikeDesktopHeaderEmits } from "./interfaces";
+
+const emits = defineEmits<NikeDesktopHeaderEmits>();
+const listOfLinks = [
+  {
+    text: "Find a store",
+    link: "/",
+  },
+  {
+    text: "Help",
+    link: "/",
+  },
+  {
+    text: "Join us",
+    link: "/",
+  },
+  {
+    text: "Sign In",
+    link: "/",
+  },
+];
+
+const navItems = [
+  {
+    text: "New & Featured",
+    link: "",
+  },
+  {
+    text: "Men",
+    link: "",
+  },
+  {
+    text: "Women",
+    link: "",
+  },
+  {
+    text: "Kids",
+    link: "",
+  },
+  {
+    text: "Jordan",
+    link: "",
+  },
+  {
+    text: "Sale",
+    link: "",
+  },
+];
+
+const openMenu = () => {
+  emits("open");
+};
+
+const closeMenu = () => {
+  emits("close");
+};
+</script>
+
+<style lang="scss">
+.header {
+  &__upper {
+    background: var(--gray-color);
+    padding: 4px 0;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__link {
+    transition: 0.3s ease-in;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &__item {
+      &.bordered {
+        border-right: 1px solid var(--text-color);
+        padding-right: 12px;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &__item {
+      transition: 0.3s ease-in;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom: 2px solid var(--text-color);
+      }
+    }
+
+    &__link {
+      font-weight: 500;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    display: flex;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    align-items: center;
+    gap: 12px;
+
+    &__search {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: none;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s ease-in;
+
+      &:hover {
+        background: var(--gray-color);
+      }
+    }
+
+    &__link {
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s ease-in;
+      &:hover {
+        background: var(--gray-color);
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,28 @@
+$fonts: (
+  "Regular": 400,
+  "Medium": 500,
+  "Bold": 700,
+);
+
+@each $name, $weight in $fonts {
+  @font-face {
+    font-family: "Helvetica-now-text";
+    src: url("../../assets/fonts/HelveticaNow/HelveticaNowText-" + $name + ".eot")
+        format("embedded-opentype"),
+      url("../../assets/fonts/HelveticaNow/HelveticaNowText-" + $name + ".woff")
+        format("woff"),
+      url("../../assets/fonts/HelveticaNow/HelveticaNowText-" + $name + "woff2")
+        format("woff2"),
+      url("../../assets/fonts/HelveticaNow/HelveticaNowText-" + $name + ".ttf")
+        format("truetype");
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
+// @font-face {
+//   font-family: "Helvetica-now-text";
+//   src: url("../../assets/fonts/HelveticaNow/HelveticaNowText-Regular.woff2");
+//   font-weight: 400;
+//   font-style: normal;
+// }
