@@ -17,11 +17,11 @@ const isDesktop = computed<boolean>(() => {
 });
 
 watch(screenWidth, () => {
-  screenWidth.value = window.innerWidth;
+  screenWidth.value = innerWidth;
 });
 
 window.addEventListener("resize", () => {
-  screenWidth.value = window.innerWidth;
+  screenWidth.value = innerWidth;
 });
 
 export const useScreen = () => {

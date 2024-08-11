@@ -1,0 +1,30 @@
+.laptop-menu {
+  transition: all 0.2s ease-out;
+}
+.laptop-menu__wrapper {
+  transition: opacity 0.5s ease;
+}
+
+.laptop-menu-enter-active .laptop-menu {
+  transition-delay: all 0.2s ease-out;
+}
+
+.laptop-menu-enter-active .laptop-menu__wrapper {
+  transition-delay: all 0.4s ease-out;
+}
+
+.laptop-menu-enter-from .laptop-menu__wrapper {
+  opacity: 0;
+}
+
+.laptop-menu-leave-to .laptop-menu__wrapper {
+  opacity: 0;
+}
+
+.laptop-menu-enter-from .laptop-menu {
+  transform: translateX(100%);
+}
+
+.laptop-menu-leave-to .laptop-menu {
+  transform: translateX(100%);
+}

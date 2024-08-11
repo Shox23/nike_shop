@@ -47,26 +47,29 @@
 
         <div class="header__controls">
           <div>
-            <button class="header__controls__search">
+            <NikeRadialButton>
               <img src="/icons/search.svg" alt="search" />
-            </button>
+            </NikeRadialButton>
           </div>
-          <RouterLink class="header__controls__link" title="Favorites" to="/">
-            <img src="/icons/favorites.svg" alt="favorites" />
-          </RouterLink>
-          <RouterLink class="header__controls__link" title="Cart" to="/">
-            <img src="/icons/bag.svg" alt="bag" />
-          </RouterLink>
+          <NikeRadialButton>
+            <RouterLink class="header__controls__link" title="Favorites" to="/">
+              <img src="/icons/favorites.svg" alt="favorites" />
+            </RouterLink>
+          </NikeRadialButton>
+          <NikeRadialButton>
+            <RouterLink class="header__controls__link" title="Cart" to="/">
+              <img src="/icons/bag.svg" alt="bag" />
+            </RouterLink>
+          </NikeRadialButton>
         </div>
       </div>
     </header>
   </div>
 </template>
 
-<script lang="ts" setup>
-import type { NikeDesktopHeaderEmits } from "./interfaces";
+<script setup lang="ts">
+import NikeRadialButton from "~/ui/NikeRadialButton/NikeRadialButton.vue";
 
-const emits = defineEmits<NikeDesktopHeaderEmits>();
 const listOfLinks = [
   {
     text: "Find a store",
@@ -112,14 +115,6 @@ const navItems = [
     link: "",
   },
 ];
-
-const openMenu = () => {
-  emits("open");
-};
-
-const closeMenu = () => {
-  emits("close");
-};
 </script>
 
 <style lang="scss">
@@ -142,8 +137,9 @@ const closeMenu = () => {
   }
 
   &__link {
+    font-family: "Helvetica-medium";
     transition: 0.3s ease-in;
-    font-weight: 500;
+    // font-weight: 500;
     font-size: 12px;
     line-height: 150%;
 
@@ -199,35 +195,9 @@ const closeMenu = () => {
     align-items: center;
     gap: 12px;
 
-    &__search {
-      border: none;
-      outline: none;
-      cursor: pointer;
-      background: none;
-      height: 36px;
-      width: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s ease-in;
-
-      &:hover {
-        background: var(--gray-color);
-      }
-    }
-
     &__link {
-      height: 36px;
-      width: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s ease-in;
-      &:hover {
-        background: var(--gray-color);
-      }
+      height: 24px;
+      width: 24px;
     }
   }
 }
