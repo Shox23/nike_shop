@@ -8,7 +8,9 @@
             src="/icons/nike_bigger.svg"
             alt="logo"
           />
-          <form class="search-form__form" @submit.prevent></form>
+          <form class="search-form__form" @submit.prevent>
+            <NikeSearchInput v-model="inputValue" placeholder="Search" />
+          </form>
           <button class="search-form__btn">Cancel</button>
         </div>
       </div>
@@ -16,6 +18,10 @@
   </Teleport>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NikeSearchInput from "~/ui/NikeSearchInput/NikeSearchInput.vue";
+
+const inputValue = defineModel();
+</script>
 
 <style lang="scss"></style>

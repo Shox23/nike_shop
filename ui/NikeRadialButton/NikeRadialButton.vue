@@ -1,7 +1,7 @@
 <template>
   <button
     class="radial-btn"
-    :class="[{isPressed ? ' pressed' : ''}, {color ? ' colored' : ''}]"
+    :class="classes"
     @mousedown="isPressed = true"
     @mouseup="isPressed = false"
     @click="$emit('onClick')"
@@ -19,6 +19,10 @@ import type {
 const props = defineProps<NikeRadialButtonProps>();
 defineEmits<NikeRadialButtonEmits>();
 const isPressed = ref<boolean>(false);
+const classes = computed(() => ({
+  pressed: isPressed.value,
+  colored: props.color,
+}));
 </script>
 
 <style lang="scss">

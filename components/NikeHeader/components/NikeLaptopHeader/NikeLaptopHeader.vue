@@ -25,12 +25,14 @@
       </div>
     </div>
     <NikeLaptopMenu @close="isMenuOpen = false" :is-open="isMenuOpen" />
+    <NikeSearchForm />
   </header>
 </template>
 
 <script lang="ts" setup>
 import NikeRadialButton from "~/ui/NikeRadialButton/NikeRadialButton.vue";
 import NikeLaptopMenu from "../NikeLaptopMenu/NikeLaptopMenu.vue";
+import NikeSearchForm from "../NikeSearchForm/NikeSearchForm.vue";
 
 const isMenuOpen = ref<boolean>(false);
 const isFormOpen = ref<boolean>(false);

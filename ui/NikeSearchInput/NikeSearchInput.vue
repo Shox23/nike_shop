@@ -4,9 +4,14 @@
       <NikeRadialButton color="#f5f5f5">
         <img src="/icons/search.svg" alt="icon" />
       </NikeRadialButton>
-      <input type="text" class="search-input__field" />
+      <input
+        type="text"
+        class="search-input__field"
+        v-model="model"
+        :placeholder="placeholder"
+      />
     </div>
-    <NikeRadialButton>
+    <NikeRadialButton v-if="model" @on-click="clearInput" color="#f5f5f5">
       <img src="/icons/close.svg" alt="icon" />
     </NikeRadialButton>
   </div>
@@ -14,6 +19,15 @@
 
 <script lang="ts" setup>
 import NikeRadialButton from "../NikeRadialButton/NikeRadialButton.vue";
+import type { NikeSearchInputEmits, NikeSearchInputProps } from "./interfaces";
+
+defineEmits<NikeSearchInputEmits>();
+defineProps<NikeSearchInputProps>();
+const model = defineModel();
+
+const clearInput = () => {
+  model.value = "";
+};
 </script>
 
 <style lang="scss">
@@ -30,9 +44,11 @@ import NikeRadialButton from "../NikeRadialButton/NikeRadialButton.vue";
   }
 
   &__field {
+    font-weight: 500;
+    padding-left: 4px;
     border: none;
     outline: none;
-    background: none
+    background: none;
   }
 }
 </style>
